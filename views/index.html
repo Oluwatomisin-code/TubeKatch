@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom Youtube Downloader</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <nav>
+        <div id="navbar-header">
+            <a href="#">
+                <img id="navbar-icon" src="tomvid.png" alt="navbar logo">
+                <h1>
+                    TomVid
+                </h1>
+
+            </a>
+        </div>
+        <ul>
+            <li>
+                <a href="">
+                   About
+
+               </a>
+            </li>
+            <li>
+                <a href="">
+                    How to use
+
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <form>
+            <h3> Enter Youtube Video Link</h3>
+            <input id="url-link" placeholder='Enter the link to youtube video here'>
+            <button id="get-video-details">Download</button>
+        </form>
+
+
+        <!--Video Data will be hidden till after the data is fetched-->
+        <div class="video-data">
+            <div>
+                <img id="thumbnail">
+            </div>
+            <div id="video-details">
+                <p id="video-title"></p>
+                <p id="video-time"></p>
+
+            </div>
+            <div id="controls">
+
+                <select id="video-format"></select>
+                <button id="download">Download Now</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        document.getElementById("get-video-details").addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById("get-video-details").disabled = true;
+            let urllink = document.getElementById("url-link").value.trim()
+
+
+            if (urllink.length == 0) {
+
+                alert("Please enter the link to your video")
+            }
+            fetch("http://localhost:4000/getVideo?VideoUrl=" + urllink)
+                .then(response => response.json())
+                .then(data => {
+                    // console.log(data)
+                    // console.log(data.videoDetails.thumbnails.at(-1))
+                    // console.log(data.videoDetails.lengthSeconds)
+
+                    document.getElementById('thumbnail').src = data.videoDetails.thumbnails.at(-1).url;
+                    document.getElementById('video-title').innerText = data.videoDetails.title;
+
+                    let html = "";
+                    for (let i = 0; i < data.formats.length; i++) {
+                        if (data.formats[i].container != 'mp4') {
+                            continue;
+                        }
+
+                        html += `<option value="${data.formats[i].itag}" data-pixel="${data.formats[i].qualityLabel}">${data.formats[i].qualityLabel} ${data.formats[i].container}</option>`;
+                        document.getElementById('video-format').innerHTML = html;
+                        document.querySelector('.video-data').style.display = 'flex';
+
+                    }
+
+                })
+        })
+
+        //What happens when the download now button is clicked
+        document.getElementById('download').addEventListener('click', () => {
+            const urllink = document.getElementById("url-link").value.trim();
+            const itag = document.getElementById("video-format").value;
+            const title = document.getElementById('video-title').textContent;
+
+            //strip title of non alphanumeric characters
+            const regex = /[^A-Za-z0-9]/g;
+            const newtitle = title.replace(regex, "");
+
+            const pixel = document.getElementById('video-format').getAttribute('data-pixel');
+
+            window.open("http://localhost:4000/download?VideoUrl=" + urllink + '&itag=' + itag + '&title=' + newtitle)
+        })
+    </script>
+</body>
+
+</html>

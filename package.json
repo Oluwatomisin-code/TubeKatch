@@ -1,0 +1,25 @@
+{
+    "name": "youtubedownloader",
+    "version": "1.0.0",
+    "description": "A simple youtube downloader project",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "keywords": [
+        "youtube",
+        "node",
+        "video",
+        "downloader"
+    ],
+    "author": "Oluwatomisin Adeyinka Tomori (OAT, Oluwatomisin-code)",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "ytdl-core": "^4.9.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.14"
+    }
+}

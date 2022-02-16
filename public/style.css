@@ -127,15 +127,17 @@ form>button {
 
 /* Add animation to "page content" */
 
-.animate-bottom {
+
+/* .animate-bottom {
     position: relative;
     -webkit-animation-name: animatebottom;
     -webkit-animation-duration: 1s;
     animation-name: animatebottom;
     animation-duration: 1s
-}
+} */
 
-@-webkit-keyframes animatebottom {
+
+/* @-webkit-keyframes animatebottom {
     from {
         bottom: -300px;
         opacity: 0
@@ -155,7 +157,7 @@ form>button {
         bottom: 0;
         opacity: 1
     }
-}
+} */
 
 .video-data {
     display: none;

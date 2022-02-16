@@ -333,7 +333,7 @@ form>button {
         margin: 40px 0 0 0;
     }
     form>button {
-        width: 70px;
+        width: 80px;
         height: 40px;
         color: white;
         background-color: black;
@@ -341,7 +341,7 @@ form>button {
         cursor: pointer;
         font-size: 12px;
         border-radius: 5px;
-        padding: 5px;
+        padding: 30px;
     }
     .video-data {
         display: none;

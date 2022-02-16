@@ -341,7 +341,9 @@ form>button {
         cursor: pointer;
         font-size: 12px;
         border-radius: 5px;
-        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .video-data {
         display: none;

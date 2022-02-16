@@ -301,6 +301,7 @@ form>button {
 
 .how-to {
     max-width: 800px;
+    margin-bottom: 70px;
 }
 
 @media screen and (max-width: 915px) {

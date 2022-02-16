@@ -31,9 +31,9 @@ document.getElementById('download').addEventListener('click', () => {
         end = eval((endhr * 60) + (endmin * 60) + (endsec * 1));
         duration = end - start;
 
-        return window.open("http://localhost:4000/download?VideoUrl=" + urllink + '&itag=' + itag + '&title=' + newtitle + '&str=' + start + '&dur=' + duration)
+        return window.open(process.env.PORT + "/download?VideoUrl=" + urllink + '&itag=' + itag + '&title=' + newtitle + '&str=' + start + '&dur=' + duration)
     }
 
-    return window.open("http://localhost:4000/download?VideoUrl=" + urllink + '&itag=' + itag + '&title=' + newtitle)
+    return window.open(process.env.PORT + "/download?VideoUrl=" + urllink + '&itag=' + itag + '&title=' + newtitle)
 
 })

@@ -24,7 +24,7 @@
 
 
             //fetch video
-            fetch("http://localhost:4000/getVideo?VideoUrl=" + urllink)
+            fetch(process.env.PORT + "/getVideo?VideoUrl=" + urllink)
                 .then(response => response.json())
                 .then(data => {
                     // console.log(data)

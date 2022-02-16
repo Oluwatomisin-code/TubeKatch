@@ -340,6 +340,8 @@ form>button {
         border: none;
         cursor: pointer;
         font-size: 12px;
+        border-radius: 5px;
+        padding: 5px;
     }
     .video-data {
         display: none;

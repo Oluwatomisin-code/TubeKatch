@@ -16,8 +16,10 @@
     "author": "Oluwatomisin Adeyinka Tomori (OAT, Oluwatomisin-code)",
     "license": "ISC",
     "dependencies": {
+        "@ffmpeg-installer/ffmpeg": "^1.1.0",
         "express": "^4.17.1",
-        "ytdl-core": "^4.9.1"
+        "fluent-ffmpeg": "^2.1.2",
+        "ytdl-core": "^4.10.1"
     },
     "devDependencies": {
         "nodemon": "^2.0.14"

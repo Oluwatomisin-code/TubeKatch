@@ -31,9 +31,9 @@ document.getElementById('download').addEventListener('click', () => {
         end = eval((endhr * 60) + (endmin * 60) + (endsec * 1));
         duration = end - start;
 
-        return window.open(process.env.PORT + "/download?VideoUrl=" + urllink + '&itag=' + itag + '&title=' + newtitle + '&str=' + start + '&dur=' + duration)
+        return window.open("https://tubekatch.herokuapp.com/download?VideoUrl=" + urllink + '&itag=' + itag + '&title=' + newtitle + '&str=' + start + '&dur=' + duration)
     }
 
-    return window.open(process.env.PORT + "/download?VideoUrl=" + urllink + '&itag=' + itag + '&title=' + newtitle)
+    return window.open("https://tubekatch.herokuapp.com/download?VideoUrl=" + urllink + '&itag=' + itag + '&title=' + newtitle)
 
 })

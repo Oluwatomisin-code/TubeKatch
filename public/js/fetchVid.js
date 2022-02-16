@@ -24,7 +24,7 @@
 
 
             //fetch video
-            fetch(process.env.PORT + "/getVideo?VideoUrl=" + urllink)
+            fetch("https://tubekatch.herokuapp.com/getVideo?VideoUrl=" + urllink)
                 .then(response => response.json())
                 .then(data => {
                     // console.log(data)

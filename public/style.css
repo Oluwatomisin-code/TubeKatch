@@ -333,14 +333,14 @@ form>button {
         margin: 40px 0 0 0;
     }
     form>button {
-        width: 80px;
+        width: 90px;
         height: 40px;
         color: white;
         background-color: black;
         border: none;
         cursor: pointer;
         font-size: 12px;
-        border-radius: 5px;
+        border-radius: 30px;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -27,12 +27,12 @@
             fetch("https://tubekatch.herokuapp.com/getVideo?VideoUrl=" + urllink)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
-                        // console.log(data.videoDetails.thumbnails.at(-1))
-                    console.log(data.videoDetails.thumbnails[data.videoDetails.thumbnails - 1])
-                        // console.log(data.videoDetails.lengthSeconds)
+                    // console.log(data)
+                    // console.log(data.videoDetails.thumbnails.at(-1))
+                    // console.log(data.videoDetails.thumbnails[data.videoDetails.thumbnails - 1])
+                    // console.log(data.videoDetails.lengthSeconds)
 
-                    document.getElementById('thumbnail').src = data.videoDetails.thumbnails[data.videoDetails.thumbnails - 1].url;
+                    document.getElementById('thumbnail').src = data.videoDetails.thumbnails[data.videoDetails.thumbnails.length - 1].url;
                     document.getElementById('video-title').innerText = data.videoDetails.title;
 
                     let html = "";

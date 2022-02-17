@@ -48,5 +48,5 @@
                     document.querySelector('.load').style.display = 'none'
                     document.getElementById("get-video-details").disabled = false;
                     document.getElementById("get-video-details").style.backgroundColor = 'black';
-                })
+                }).catch(err => alert(err))
         })

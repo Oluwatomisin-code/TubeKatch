@@ -1,15 +1,11 @@
 const express = require('express');
 const app = express();
-
-const cors = require('cors')
-const fs = require('fs');
 const ytdl = require('ytdl-core');
+const fs = require('fs');
 
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 ffmpeg.setFfmpegPath(ffmpegPath);
-
-app.use(cors())
 app.use(express.static('public'));
 
 //load home page
@@ -19,11 +15,10 @@ app.get("/", (req, res) => {
 
 //get video details
 app.get("/getVideo", async(req, res) => {
-    req.setTimeout(500000)
     const videoUrl = req.query.VideoUrl;
     console.log('Fetching Youtube video');
 
-    await ytdl.getInfo(videoUrl).then((info) => console.log(info) && res.status(200).json(info)).catch((err) => console.log(err))
+    await ytdl.getInfo(videoUrl).then((info) => res.status(200).json(info)).catch((err) => res.json(err))
 })
 
 

@@ -31,7 +31,7 @@
                         // console.log(data.videoDetails.thumbnails.at(-1))
                         // console.log(data.videoDetails.lengthSeconds)
 
-                    document.getElementById('thumbnail').src = data.videoDetails.thumbnails.at(-1).url;
+                    document.getElementById('thumbnail').src = data.videoDetails.thumbnails[data.videoDetails.thumbnails - 1].url;
                     document.getElementById('video-title').innerText = data.videoDetails.title;
 
                     let html = "";

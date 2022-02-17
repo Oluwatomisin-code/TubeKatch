@@ -18,11 +18,11 @@ app.get("/", (req, res) => {
 })
 
 //get video details
-app.get("/getVideo", (req, res) => {
+app.get("/getVideo", async(req, res) => {
     const videoUrl = req.query.VideoUrl;
     console.log('Fetching Youtube video');
 
-    ytdl.getInfo(videoUrl).then((info) => console.log('done') && res.status(200).json(info)).catch((err) => console.log(err))
+    await ytdl.getInfo(videoUrl).then(async(info) => console.log(info) && res.status(200).json(info)).catch((err) => console.log(err))
 })
 
 

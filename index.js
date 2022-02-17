@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const https = require('https')
 const cors = require('cors')
 const fs = require('fs');
 const ytdl = require('ytdl-core');
 
 const ffmpeg = require('fluent-ffmpeg');
+const { Server } = require('http');
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 ffmpeg.setFfmpegPath(ffmpegPath);
 
@@ -127,4 +129,6 @@ app.get("/download", async(req, res) => {
 
 })
 
-app.listen(process.env.PORT || '4000');
+const server = https.createServer(app)
+
+server.listen(process.env.PORT || '4000');

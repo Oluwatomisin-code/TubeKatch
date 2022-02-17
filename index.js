@@ -10,8 +10,10 @@ const { Server } = require('http');
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 ffmpeg.setFfmpegPath(ffmpegPath);
 
+const server = https.createServer(app)
 app.use(cors())
 app.use(express.static('public'));
+
 
 //load home page
 app.get("/", (req, res) => {
@@ -129,6 +131,6 @@ app.get("/download", async(req, res) => {
 
 })
 
-const server = https.createServer(app)
+
 
 server.listen(process.env.PORT || '4000');

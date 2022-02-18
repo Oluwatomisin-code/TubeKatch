@@ -60,7 +60,7 @@ app.get("/download", async(req, res) => {
                     })
                 }
             })
-            .saveToFile(__dirname + './temp/' + filename);
+            .saveToFile(__dirname + '/temp/' + filename);
     }
 
     //downloadMet2 gets called when cropping is to start from beginning of video

@@ -83,7 +83,7 @@ app.get("/download", async(req, res) => {
                     })
                 }
             })
-            .saveToFile(__dirname + './temp/' + filename);
+            .saveToFile(__dirname + '/temp/' + filename);
     }
 
     //downloadMet3 gets called when both start time and duration is gotten from frontend
@@ -107,7 +107,7 @@ app.get("/download", async(req, res) => {
                     })
                 }
             })
-            .saveToFile(__dirname + './temp/' + filename);
+            .saveToFile(__dirname + '/temp/' + filename);
     }
     if (start === undefined) {
 

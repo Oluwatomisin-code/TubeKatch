@@ -42,9 +42,10 @@ app.get("/download", async(req, res) => {
     //declaring download methods
     //downloadMet1 gets called when there is no cropping required
     downloadMet1 = () => {
+        console.log("Met1 was called")
         ffmpeg(video)
             .on('error', function(err) {
-                console.log('wahala' + err);
+                console.log('wahala ooo' + err);
             })
             .on('end', function(err) {
                 if (!err) {
@@ -116,10 +117,10 @@ app.get("/download", async(req, res) => {
 
         if (dur) {
 
-            return downloadMet2()
+            return downloadMet2();
         }
     }
-    return downloadMet3;
+    return downloadMet3();
 
 
 })

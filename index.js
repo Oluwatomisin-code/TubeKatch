@@ -38,9 +38,6 @@ app.get("/download", async(req, res) => {
     //get the video and set it to an accessible variable for ffmpeg
     const video = ytdl(videoUrl, { filter: format => format.itag == itag })
 
-    //create writable stream
-    let stream = fs.createWriteStream(__dirname + '/temp/' + filename);
-
 
     //declaring download methods
     //downloadMet1 gets called when there is no cropping required
@@ -63,7 +60,7 @@ app.get("/download", async(req, res) => {
                     })
                 }
             })
-            .saveToFile(stream);
+            .saveToFile(__dirname + './temp/' + filename);
     }
 
     //downloadMet2 gets called when cropping is to start from beginning of video

@@ -89,7 +89,7 @@ app.get("/download", async(req, res) => {
     //downloadMet3 gets called when both start time and duration is gotten from frontend
     downloadMet3 = () => {
         ffmpeg(video)
-            .setInput(start)
+            .seekInput(start)
             .setDuration(dur)
             .on('error', function(err) {
                 console.log('wahala' + err);

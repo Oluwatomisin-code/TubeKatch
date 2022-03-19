@@ -2,11 +2,30 @@ const express = require('express');
 const app = express();
 const ytdl = require('ytdl-core');
 const fs = require('fs');
+const cors = require('cors');
 
+//cors middleware
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+//fmpeg configurations
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 ffmpeg.setFfmpegPath(ffmpegPath);
+
+//declare public folder as static
 app.use(express.static('public'));
+
+
+
+
+
+
+
+//Routing starts here
 
 //load home page
 app.get("/", (req, res) => {

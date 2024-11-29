@@ -299,3 +299,81 @@ def download():
 
 if __name__ == '__main__':
     app.run(debug=True,)
+    
+    
+    
+    
+    
+    
+    # Helper function to fetch video details
+def get_video_details(url):
+    # Options to make sure yt-dlp returns the best info without downloading
+    ydl_opts = {
+        'quiet': True,  # Suppress yt-dlp output
+        'format': 'bestaudio/bestvideo',  # Will get best audio/video options
+        'noplaylist': True,  # Don't download playlists, just the video
+        'nocheckcertificate': True,
+    }
+
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info_dict = ydl.extract_info(url, download=False)  # Don't download, just get info
+
+    # Format the response to return useful information
+    formats = []
+    for f in info_dict.get('formats', []):
+        print(info_dict, '\n')
+        if(f.get('format_note')):
+            #formatting data for mp4s
+            if(f.get('ext')=="mp4"):
+                #ensuring we dont return videos that resolutioon is not specified
+                if(f.get('height')):
+                # Extracting only the necessary details
+                    formats.append({
+                        'format_id': f['format_id'],
+                        'format_note': f.get('format_note'),
+                        'ext': f['ext'],
+                        'resolution': f.get('height', 'N/A'),
+                        'filesize': f.get('filesize', 'N/A'),
+                        'url': f.get('url', None),  # Only include direct URL for later download
+                        'acodec': f.get('acodec', 'N/A')  # Add audio codec info (if available)
+                    })
+             # Extracting only the necessary details
+            else:
+                if(f.get('ext')!="mhtml"):  
+                    formats.append({
+                        'format_id': f['format_id'],
+                        'format_note': f.get('format_note'),
+                        'ext': f['ext'],
+                        'resolution': f.get('height', 'N/A'),
+                        'filesize': f.get('filesize', 'N/A'),
+                        'url': f.get('url', None),  # Only include direct URL for later download
+                        'acodec': f.get('acodec', 'N/A')  # Add audio codec info (if available)
+                    })
+    
+
+
+    return {
+        'title': info_dict.get('title'),
+        'description': info_dict.get('description'),
+        'duration':info_dict.get('duration'),
+        'thumbnail': info_dict.get('thumbnail'),
+        'formats': formats  # List of formats available for download
+        
+    }
+
+
+@app.route('/getVideo', methods=['POST'],)
+def getVideo():
+    videoUrl = request.args.get('videoUrl')
+
+    if videoUrl:
+        print(videoUrl, 'right away')
+
+        try:
+            # Get the video details using yt-dlp
+            video_info = get_video_details(videoUrl)
+            return jsonify(video_info),200  # Return the video details in JSON format
+
+        except Exception as e:
+            print(str(e), 'error from except block')
+            return jsonify({'error': str(e)}), 500

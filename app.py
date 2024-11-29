@@ -173,7 +173,7 @@ def get_video_url_from_selenium(url):
     try:
         # Open the YouTube video page
         driver.get(url)
-        time.sleep(5)  # Wait for the page to load properly (you may need to adjust timing)
+        time.sleep(30)  # Wait for the page to load properly (you may need to adjust timing)
 
         # Return the final URL after loading the page
         final_url = driver.current_url

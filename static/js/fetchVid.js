@@ -30,7 +30,7 @@ document.getElementById("get-video-details").addEventListener("click", (e) => {
   //fetch video
 
   // fetch("http://127.0.0.1:5000/getVideo?videoUrl=" + urllink, {
-  fetch("http://0.0.0.0:10000/getVideo?videoUrl=" + urllink, {
+  fetch("https://tubekatch.onrender.com/getVideo?videoUrl=" + urllink, {
     method: "POST",
   })
     .then((response) => response.json())

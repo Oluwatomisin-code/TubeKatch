@@ -1,0 +1,374 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Work+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>TubeKatch: Youtube Downloader</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome for social media icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+
+  <body class="min-h-screen bg-[#221114]">
+    <!--navbar  -->
+    <!-- Navbar Section -->
+    <nav class="flex justify-between items-center bg-[#47242b] h-20 px-8">
+      <div id="navbar-header" class="flex items-center">
+        <a href="#" class="flex items-center text-white no-underline">
+          <img
+            id="navbar-icon"
+            src="/static/images/tubekatch.png"
+            alt="navbar logo"
+            class="w-12"
+          />
+          <h1 class="text-2xl ml-3">TubeKatch</h1>
+        </a>
+      </div>
+      <ul class="flex space-x-4 items-center">
+        <li>
+          <a href="#" class="px-4 py-2 text-white hover:bg-[#db143c] rounded-md"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="#how-to-use"
+            class="px-4 py-2 text-white hover:bg-[#db143c] rounded-md"
+            >How to use</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div
+      class="relative flex w-full min-h-fit flex-col bg-[#221114] dark group/design-root overflow-y-auto pb-64 items-center"
+      style="font-family: 'Work Sans', 'Noto Sans', sans-serif"
+    >
+      <form
+        class="w-full max-w-[680px] flex-wrap items-center justify-center gap-4 px-4 py-3"
+      >
+        <div
+          class="relative w-full max-w-[680px] flex-wrap items-center justify-center gap-4 px-4 py-3"
+        >
+          <input
+            id="url-link"
+            placeholder="Paste video URL"
+            class="w-full rounded-xl text-white bg-[#47242b] h-14 px-4 pr-14 placeholder:text-[#c8929d] focus:outline-none focus:ring-0 focus:border-none"
+          />
+          <!-- Submit Button Inside the Input -->
+          <button
+            type="Submit"
+            id="get-video-details"
+            class="absolute right-5 top-1/2 transform -translate-y-1/2 bg-[#db143c] text-white w-12 h-12 rounded-full flex items-center justify-center cursor-pointer"
+            aria-label="Submit URL"
+          >
+            <!-- Send Icon (IoMdSend-like icon) -->
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 12l18-6-6 18-3-9-9-3 6-6z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <p id="video-title" class="text-xl font-semibold my-2 text-white"></p>
+      <div id="video-data" class="hidden flex-col max-w-[880px] items-center">
+        <div class="flex flex-col lg:flex-row gap-4 items-center">
+          <!--video thumbnail-->
+          <div class="flex max-w-[680px] flex-wrap items-start gap-4 px-4 py-3">
+            <img id="thumbnail" class="w-full rounded-xl" />
+          </div>
+          <div class="flex flex-col">
+            <!--video Formats and Audio Format Section-->
+            <h3
+              class="text-white text-base font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
+            >
+              Video format and quality:
+            </h3>
+
+            <div id="video-format" class="flex flex-wrap gap-3 p-4"></div>
+          </div>
+        </div>
+        <!--<h3
+          class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
+        >
+          Audio format and quality
+        </h3>
+        <div class="flex flex-wrap gap-3 p-4">
+          <label
+            class="text-sm font-medium leading-normal flex items-center justify-center rounded-xl border border-[#66333d] px-4 h-11 text-white has-[:checked]:border-[3px] has-[:checked]:px-3.5 has-[:checked]:border-[#db143c] relative cursor-pointer"
+          >
+            MP3 128Kbps
+            <input
+              type="radio"
+              class="invisible absolute"
+              name="de1f3d7d-132d-417d-8357-517cfdb21d4e"
+            />
+          </label>
+          <label
+            class="text-sm font-medium leading-normal flex items-center justify-center rounded-xl border border-[#66333d] px-4 h-11 text-white has-[:checked]:border-[3px] has-[:checked]:px-3.5 has-[:checked]:border-[#db143c] relative cursor-pointer"
+          >
+            MP3 256Kbps
+            <input
+              type="radio"
+              class="invisible absolute"
+              name="de1f3d7d-132d-417d-8357-517cfdb21d4e"
+            />
+          </label>
+        </div>-->
+        <!--Trim Section-->
+
+        <div class="mt-5 p-5 w-full max-w-[680px]">
+          <div class="text-left flex flex-row items-center">
+            <input
+              type="checkbox"
+              id="accept"
+              class="w-4 h-4 rounded-sm checked:border-[#db143c] checked:bg-[#db143c] focus:ring-0"
+            />
+            <h3
+              class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4"
+            >
+              Trim video?
+            </h3>
+          </div>
+          <div>
+            <div
+              id="time-slider"
+              class="relative w-full h-2 rounded-sm bg-[#66333d] mt-4"
+            >
+              <div
+                id="slider-range"
+                class="absolute top-0 h-2 bg-[#db143c]"
+              ></div>
+              <div
+                id="start-handle"
+                class="absolute top-[-4px] left-0 w-4 h-4 bg-[#db143c] rounded-full cursor-pointer z-10"
+              ></div>
+              <div
+                id="end-handle"
+                class="absolute top-[-4px] left-[100%] w-4 h-4 bg-[#db143c] rounded-full cursor-pointer z-10"
+              ></div>
+            </div>
+
+            <!-- Time Labels -->
+            <div class="flex justify-between text-sm mt-2">
+              <span id="start-time-label" class="text-white">00:00:00</span>
+              <span id="end-time-label" class="text-white"></span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex px-4 py-3">
+            <button
+              id="download"
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#db143c] text-white text-base font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Start Download</span>
+            </button>
+          </div>
+          <div class="h-5 bg-[#221114]"></div>
+        </div>
+      </div>
+      <h3
+        class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
+      >
+        How to Use
+      </h3>
+      <div
+        id="how-to-use"
+        class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4"
+      >
+        <div
+          class="flex flex-1 gap-3 rounded-lg border border-[#66333d] bg-[#331a1f] p-4 flex-col"
+        >
+          <div
+            class="text-white"
+            data-icon="Clipboard"
+            data-size="24px"
+            data-weight="regular"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24px"
+              height="24px"
+              fill="currentColor"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="flex flex-col gap-1">
+            <h2 class="text-white text-base font-bold leading-tight">
+              Paste Video URL
+            </h2>
+            <p class="text-[#c8929d] text-sm font-normal leading-normal">
+              Copy and paste the URL of the video you want to download
+            </p>
+          </div>
+        </div>
+        <div
+          class="flex flex-1 gap-3 rounded-lg border border-[#66333d] bg-[#331a1f] p-4 flex-col"
+        >
+          <div
+            class="text-white"
+            data-icon="Gear"
+            data-size="24px"
+            data-weight="regular"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24px"
+              height="24px"
+              fill="currentColor"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="flex flex-col gap-1">
+            <h2 class="text-white text-base font-bold leading-tight">
+              Select Format
+            </h2>
+            <p class="text-[#c8929d] text-sm font-normal leading-normal">
+              Choose whether you want to download the video or just the audio
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4"
+      >
+        <div
+          class="flex flex-1 gap-3 rounded-lg border border-[#66333d] bg-[#331a1f] p-4 flex-col"
+        >
+          <div
+            class="text-white"
+            data-icon="Star"
+            data-size="24px"
+            data-weight="regular"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24px"
+              height="24px"
+              fill="currentColor"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M239.2,97.29a16,16,0,0,0-13.81-11L166,81.17,142.72,25.81h0a15.95,15.95,0,0,0-29.44,0L90.07,81.17,30.61,86.32a16,16,0,0,0-9.11,28.06L66.61,153.8,53.09,212.34a16,16,0,0,0,23.84,17.34l51-31,51.11,31a16,16,0,0,0,23.84-17.34l-13.51-58.6,45.1-39.36A16,16,0,0,0,239.2,97.29Zm-15.22,5-45.1,39.36a16,16,0,0,0-5.08,15.71L187.35,216v0l-51.07-31a15.9,15.9,0,0,0-16.54,0l-51,31h0L82.2,157.4a16,16,0,0,0-5.08-15.71L32,102.35a.37.37,0,0,1,0-.09l59.44-5.14a16,16,0,0,0,13.35-9.75L128,32.08l23.2,55.29a16,16,0,0,0,13.35,9.75L224,102.26S224,102.32,224,102.33Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="flex flex-col gap-1">
+            <h2 class="text-white text-base font-bold leading-tight">
+              Choose Quality
+            </h2>
+            <p class="text-[#c8929d] text-sm font-normal leading-normal">
+              Select the video quality you prefer
+            </p>
+          </div>
+        </div>
+        <div
+          class="flex flex-1 gap-3 rounded-lg border border-[#66333d] bg-[#331a1f] p-4 flex-col"
+        >
+          <div
+            class="text-white"
+            data-icon="Scissors"
+            data-size="24px"
+            data-weight="regular"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24px"
+              height="24px"
+              fill="currentColor"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M157.73,113.13A8,8,0,0,1,159.82,102L227.48,55.7a8,8,0,0,1,9,13.21l-67.67,46.3a7.92,7.92,0,0,1-4.51,1.4A8,8,0,0,1,157.73,113.13Zm80.87,85.09a8,8,0,0,1-11.12,2.08L136,137.7,93.49,166.78a36,36,0,1,1-9-13.19L121.83,128,84.44,102.41a35.86,35.86,0,1,1,9-13.19l143,97.87A8,8,0,0,1,238.6,198.22ZM80,180a20,20,0,1,0-5.86,14.14A19.85,19.85,0,0,0,80,180ZM74.14,90.13a20,20,0,1,0-28.28,0A19.85,19.85,0,0,0,74.14,90.13Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="flex flex-col gap-1">
+            <h2 class="text-white text-base font-bold leading-tight">
+              Trim Video
+            </h2>
+            <p class="text-[#c8929d] text-sm font-normal leading-normal">
+              If you want to trim the video, set the start and end times
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Section -->
+    <footer class="bg-[#47242b] text-white py-8 w-full">
+      <div class="container mx-auto text-center">
+        <p class="text-lg font-semibold">
+          Created by <span class="text-[#db143c]">Oluwatomisin</span>
+        </p>
+        <div class="flex justify-center space-x-6 mt-4">
+          <!-- Replace with your actual social media links -->
+          <a
+            href="https://www.linkedin.com/in/oluwatomisin-adeyinka-26a13219b/"
+            target="_blank"
+            class="text-white hover:text-[#db143c]"
+          >
+            <i class="fab fa-linkedin fa-2x"></i>
+          </a>
+          <a
+            href="https://github.com/oluwatomisin-code"
+            target="_blank"
+            class="text-white hover:text-[#db143c]"
+          >
+            <i class="fab fa-github fa-2x"></i>
+          </a>
+          <a
+            href="https://instagram.com/tomisintomori"
+            target="_blank"
+            class="text-white hover:text-[#db143c]"
+          >
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
+          <a
+            href="https://twitter.com/tomisintomori"
+            target="_blank"
+            class="text-white hover:text-[#db143c]"
+          >
+            <i class="fab fa-x-twitter fa-2x">𝕏</i>
+          </a>
+        </div>
+        <p class="mt-4 text-sm">© 2024 TubeKatch. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+
+  <script src="/static/js/timeInput.js"></script>
+  <script src="/static/js/fetchVid.js"></script>
+  <script src="/static/js/download.js"></script>
+  <script src="/static/js/slider.js"></script>
+</html>

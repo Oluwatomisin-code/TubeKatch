@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TubeKatch: Youtube Downloader</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="font-sans bg-gray-900 text-white overflow-hidden">
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center bg-black h-20 px-8">
+      <div id="navbar-header" class="flex items-center">
+        <a href="#" class="flex items-center text-white no-underline">
+          <img
+            id="navbar-icon"
+            src="/static/images/tubekatch.png"
+            alt="navbar logo"
+            class="w-12"
+          />
+          <h1 class="text-2xl ml-3">TubeKatch</h1>
+        </a>
+      </div>
+      <ul class="flex space-x-4 items-center">
+        <li><a href="#" class="px-4 py-2 text-white">About</a></li>
+        <li><a href="#" class="px-4 py-2 text-white">How to use</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 py-10">
+      <div class="max-w-4xl mx-auto flex flex-col items-center">
+        <h3 class="text-2xl font-bold mb-6">Enter Youtube Video Link</h3>
+        <form class="flex flex-col md:flex-row items-center w-full max-w-2xl">
+          <input
+            id="url-link"
+            placeholder="Enter the link to youtube video here"
+            class="w-full md:w-3/4 p-3 mb-4 md:mb-0 border border-gray-300 rounded-md"
+          />
+          <button
+            id="get-video-details"
+            class="w-full md:w-32 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-all"
+          >
+            Fetch Video
+          </button>
+        </form>
+
+        <!-- Loading Spinner -->
+        <div class="load hidden flex items-center mt-6">
+          <div
+            class="loader w-8 h-8 border-4 border-t-transparent border-gray-500 rounded-full animate-spin mr-2"
+          ></div>
+          <div>Processing the provided youtube link</div>
+        </div>
+
+        <!-- Video Data Section (Hidden Initially) -->
+        <div
+          class="video-data hidden flex-row max-w-4xl px-6 py-8 mt-6 animate__animated animate__fadeIn"
+        >
+          <div class="img-container flex-shrink-0 mr-6">
+            <img id="thumbnail" class="w-48 h-auto rounded-md" />
+          </div>
+          <div id="video-details" class="flex-1">
+            <p id="video-title" class="text-xl font-semibold mb-2"></p>
+            <p id="video-time" class="text-lg mb-4"></p>
+
+            <div id="controls" class="flex space-x-4 mb-6">
+              <select
+                id="video-format"
+                class="p-2 border border-gray-300 rounded-md"
+              >
+                <option value="">Select Format</option>
+              </select>
+              <button
+                id="download"
+                class="w-32 py-2 bg-gray-800 text-white rounded-md"
+              >
+                Download Now
+              </button>
+            </div>
+
+            <!-- Trim Functionality -->
+            <div class="trim-func border border-gray-700 p-6 rounded-md">
+              <div class="flex items-center mb-4">
+                <input type="checkbox" id="accept" class="mr-2" />
+                <label for="accept" class="text-lg">Trim?</label>
+              </div>
+
+              <div class="trim-time-section mb-4">
+                <div
+                  id="time-slider"
+                  class="relative w-full h-2 bg-gray-300 rounded-md"
+                >
+                  <div
+                    id="slider-range"
+                    class="absolute top-0 left-0 h-2 bg-green-500 rounded-md"
+                  ></div>
+                  <div
+                    id="start-handle"
+                    class="absolute top-0 left-0 w-4 h-4 bg-blue-500 rounded-full cursor-pointer z-10"
+                  ></div>
+                  <div
+                    id="end-handle"
+                    class="absolute top-0 left-full w-4 h-4 bg-blue-500 rounded-full cursor-pointer z-10"
+                  ></div>
+                </div>
+                <!-- Time Labels -->
+                <div class="flex justify-between mt-2 text-sm">
+                  <span id="start-time-label">00:00:00</span>
+                  <span id="end-time-label"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about mt-12 text-center">
+          <h3 class="text-2xl font-semibold mb-4">About TubeKatch?</h3>
+          <p class="text-lg">
+            TubeKatch is an online video downloader developed by Tomi. It's an
+            excellent service that helps you download YouTube videos free of
+            charge. It also allows you to trim sections of a video for your
+            needs.
+          </p>
+        </div>
+
+        <!-- How to Use Section -->
+        <div class="how-to mt-12 text-center max-w-3xl mx-auto">
+          <h3 class="text-2xl font-semibold mb-4">How to use?</h3>
+          <ol class="list-decimal list-inside text-lg">
+            <li>
+              Copy the YouTube video URL and paste it into the input field
+              above. Then click the "Fetch Video" button.
+            </li>
+            <li>Choose the video format from the dropdown menu.</li>
+            <li>Click the "Download Now" button to download the full video.</li>
+            <li>If you want to trim the video, check the "Trim?" checkbox.</li>
+            <li>
+              Use the slider to select the start and end times of the video
+              section you want to trim.
+            </li>
+            <li>
+              Click the "Download Now" button to download the trimmed video.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div
+      class="footer bg-black text-white flex items-center justify-center py-4 mt-8"
+    >
+      <p class="text-sm">
+        © TubeKatch.com - Developed by Tomi
+        <a href="Tomi.dev" class="ml-2 text-blue-400">view portfolio</a>
+      </p>
+    </div>
+
+    <!-- Tailwind CSS Spinner -->
+    <script src="/static/js/timeInput.js"></script>
+    <script src="/static/js/fetchVid.js"></script>
+    <script src="/static/js/download.js"></script>
+    <script src="/static/js/slider.js"></script>
+  </body>
+</html>

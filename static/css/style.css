@@ -1,0 +1,414 @@
+/* @font-face {
+    font-family: 'Gilroy';
+     src: url('/fonts/Gilroy-Light.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+} */
+
+html, body {
+    font-family: 'Gilroy', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+
+    justify-content: space-around;
+    height: 80px;
+    background: black;
+    box-sizing: border-box;
+}
+
+#navbar-header {
+    height: 100%;
+}
+
+#navbar-header>a {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    color: white;
+    text-decoration: none;
+}
+
+#navbar-header>a>h1 {
+    padding-left: 10px;
+}
+
+#navbar-icon {
+    max-width: 50px
+}
+
+nav>ul {
+    list-style: none;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+nav>ul>li>a {
+    text-decoration: none;
+    color: white;
+    padding: 30px;
+}
+
+.container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 80%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+
+    max-width: 700px;
+
+    align-items: center;
+}
+
+h3 {
+    margin-top: 50px;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+form>input {
+    width: 500px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid;
+    margin: 40px 20px 20px 0;
+}
+
+form>button {
+    width: 100px;
+    height: 50px;
+    color: white;
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.load {
+    display: none;
+    height: 40px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #141414;
+    border-bottom: 3px solid #141414;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from {
+        bottom: -300px;
+        opacity: 0
+    }
+    to {
+        bottom: 0px;
+        opacity: 1
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        bottom: -300px;
+        opacity: 0
+    }
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+.video-data {
+    display: none;
+    flex-direction: row;
+    max-width: 70%;
+    padding: 5vw;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 80%;
+}
+
+.img-container {
+    width: 400px;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.video-data>div>img {
+    width: 400px;
+}
+
+#video-title {
+    font-size: large;
+    font-weight: 500;
+}
+
+.controls {
+    font-size: medium;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+#video-format {
+    width: 120px;
+    height: 30px;
+    padding: 5px;
+    margin: 0;
+    border: 1px solid;
+}
+
+#download {
+    width: 150px;
+    height: 30px;
+    border: 0;
+    margin: 0;
+    background-color: rgb(28, 28, 29);
+    color: white;
+    cursor: progress
+}
+
+.trim-func {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid rgb(114, 114, 114);
+}
+
+.trim-check-section {
+    justify-content: center;
+}
+
+#accept {
+    width: 15px;
+    height: 15px;
+    color: black;
+}
+
+
+
+#time-slider {
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    position: relative;
+}
+
+.slider-range {
+    position: absolute;
+    top: 0;
+    height: 10px;
+    background: #4caf50;
+}
+
+.slider-handle {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #2196F3;
+    top: -3px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.time-display {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.start {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    margin: 10px;
+}
+
+.start-time {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    margin: 10px;
+    border: solid 1px;
+}
+
+.end {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    margin: 10px;
+}
+
+.end-time {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    margin: 10px;
+    border: solid 1px;
+}
+
+.time::-webkit-outer-spin-button,
+.time::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.time {
+    background: none;
+    height: 30px;
+    width: 20px;
+    font-size: 15px;
+    margin: 0!important;
+    padding: 3px !important;
+    border: none;
+    border-radius: none;
+}
+
+.time:focus {
+    outline: none;
+}
+
+.seperator {
+    font-weight: bolder;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+    color: white;
+    background-color: black;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+}
+
+.about {
+    max-width: 800px;
+}
+
+.how-to {
+    max-width: 800px;
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media screen and (max-width: 915px) {
+    * {
+        font-size: 13px;
+    }
+    #navbar-header>a>h1 {
+        font-size: 16px;
+    }
+    #navbar-icon {
+        max-width: 40px
+    }
+    nav>ul>li>a {
+        font-size: 11px;
+        text-decoration: none;
+        color: white;
+    }
+    form {
+        flex-direction: column;
+        max-width: 700px;
+
+        align-items: center;
+    }
+    form>input {
+        width: 300px;
+        height: 20px;
+        padding: 5px;
+        border: 1px solid;
+        margin: 40px 0 0 0;
+    }
+    form>button {
+        width: 90px;
+        height: 40px;
+        color: white;
+        background-color: black;
+        border: none;
+        cursor: pointer;
+        font-size: 12px;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .video-data {
+        display: none;
+        flex-direction: column;
+        max-width: 70%;
+        padding: 5vw;
+        align-items: center;
+        justify-content: space-around;
+        max-width: 80%;
+    }
+} */

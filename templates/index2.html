@@ -1,0 +1,145 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Work+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Galileo Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body
+    class="bg-[#221114]"
+    style="font-family: 'Work Sans', 'Noto Sans', sans-serif"
+  >
+    <!-- Navbar Section -->
+    <nav class="flex justify-between items-center bg-[#47242b] h-20 px-8">
+      <div id="navbar-header" class="flex items-center">
+        <a href="#" class="flex items-center text-white no-underline">
+          <img
+            id="navbar-icon"
+            src="/static/images/tubekatch.png"
+            alt="navbar logo"
+            class="w-12"
+          />
+          <h1 class="text-2xl ml-3">TubeKatch</h1>
+        </a>
+      </div>
+      <ul class="flex space-x-4 items-center">
+        <li>
+          <a href="#" class="px-4 py-2 text-white hover:bg-[#db143c] rounded-md"
+            >About</a
+          >
+        </li>
+        <li>
+          <a href="#" class="px-4 py-2 text-white hover:bg-[#db143c] rounded-md"
+            >How to use</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-[#221114] dark justify-between group/design-root overflow-x-hidden"
+    >
+      <div class="flex flex-col items-center">
+        <!-- Video URL Input -->
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+          <label class="flex flex-col min-w-40 flex-1">
+            <input
+              id="url-link"
+              placeholder="Paste video URL"
+              class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#47242b] focus:border-none h-14 placeholder:text-[#c8929d] p-4 text-base font-normal leading-normal"
+              value=""
+            />
+          </label>
+        </div>
+
+        <!-- Video Thumbnail & Title -->
+        <div class="flex flex-col items-center px-4 py-3">
+          <img
+            id="thumbnail"
+            src=""
+            alt="Video Thumbnail"
+            class="w-48 h-auto rounded-md mb-4"
+          />
+          <p id="video-title" class="text-white text-xl font-semibold mb-2"></p>
+          <p id="video-time" class="text-white text-lg"></p>
+        </div>
+
+        <!-- Loading Spinner (Initially Hidden) -->
+        <div
+          id="loading"
+          class="hidden flex items-center justify-center px-4 py-3"
+        >
+          <div
+            class="w-6 h-6 border-4 border-t-transparent border-gray-300 rounded-full animate-spin"
+          ></div>
+          <span class="ml-2 text-white"
+            >Processing the provided youtube link...</span
+          >
+        </div>
+
+        <!-- Start Download Button (Initially Hidden) -->
+        <div id="download-section" class="hidden flex px-4 py-3">
+          <button
+            id="download"
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#db143c] text-white text-base font-bold leading-normal tracking-[0.015em]"
+          >
+            <span class="truncate">Start Download</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h-5 bg-[#221114]"></div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script>
+      // JS logic will populate these sections dynamically
+      const loadingSpinner = document.getElementById("loading");
+      const thumbnailImage = document.getElementById("thumbnail");
+      const videoTitle = document.getElementById("video-title");
+      const videoTime = document.getElementById("video-time");
+      const downloadButton = document.getElementById("download");
+
+      // Example function to simulate fetching video details
+      function setVideoDetails(thumbnailUrl, title, time) {
+        // Show loading spinner
+        loadingSpinner.classList.remove("hidden");
+
+        // Simulate an async process (e.g., fetching video details)
+        setTimeout(() => {
+          // Hide the loading spinner and show video details
+          loadingSpinner.classList.add("hidden");
+          thumbnailImage.src = thumbnailUrl;
+          videoTitle.textContent = title;
+          videoTime.textContent = time;
+
+          // Show the download button
+          document
+            .getElementById("download-section")
+            .classList.remove("hidden");
+        }, 2000);
+      }
+
+      // Example usage: simulate setting video details when a link is pasted
+      document.getElementById("url-link").addEventListener("change", () => {
+        // You would normally fetch these details from your JS file
+        setVideoDetails(
+          "https://via.placeholder.com/150",
+          "Example Video Title",
+          "10:00"
+        );
+      });
+    </script>
+  </body>
+</html>

@@ -24,7 +24,7 @@ document.getElementById("download").addEventListener("click", (e) => {
   //strip title of non alphanumeric characters
   const regex = /[^A-Za-z0-9]/g;
   const newtitle = title.replace(regex, "");
-  // console.log(pixel);
+  console.log(newtitle);
 
   //get trim checkbox
   const acceptTrim = document.getElementById("accept");
@@ -55,8 +55,8 @@ document.getElementById("download").addEventListener("click", (e) => {
         itag +
         "&format_id=" +
         format_id +
-        // "&title=" +
-        // newtitle +
+        "&title=" +
+        newtitle +
         "&str=" +
         starthr +
         "&end=" +

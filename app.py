@@ -21,6 +21,7 @@ def get_video_details(url):
         'quiet': True,  # Suppress yt-dlp output
         'format': 'bestaudio/bestvideo',  # Will get best audio/video options
         'noplaylist': True,  # Don't download playlists, just the video
+        'nocheckcertificate': True,
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:

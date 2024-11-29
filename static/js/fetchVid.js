@@ -28,9 +28,8 @@ document.getElementById("get-video-details").addEventListener("click", (e) => {
 
   // document.querySelector(".load").style.display = "Flex";
   //fetch video
-  //   fetch("https://tubekatch.herokuapp.com/getVideo?VideoUrl=" + urllink)
-  // fetch("http://127.0.0.1:5000/getVideo?videoUrl=" + urllink, {
-  fetch("https://tube-katch.vercel.app/getVideo?videoUrl=" + urllink, {
+
+  fetch("http://127.0.0.1:5000/getVideo?videoUrl=" + urllink, {
     method: "POST",
   })
     .then((response) => response.json())
@@ -108,3 +107,5 @@ document.getElementById("get-video-details").addEventListener("click", (e) => {
 //     a.click();
 //     a.remove();
 //   }
+//   fetch("https://tubekatch.herokuapp.com/getVideo?VideoUrl=" + urllink)
+// fetch("http://127.0.0.1:5000/getVideo?videoUrl=" + urllink, {

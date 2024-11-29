@@ -49,7 +49,8 @@ document.getElementById("download").addEventListener("click", (e) => {
     // duration = end - start;
 
     return window.open(
-      "http://127.0.0.1:5000/download?videoUrl=" +
+      // "http://127.0.0.1:5000/download?videoUrl=" +
+      "https://tube-katch.vercel.app/download?videoUrl=" +
         urllink +
         "&itag=" +
         itag +

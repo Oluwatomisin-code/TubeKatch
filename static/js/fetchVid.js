@@ -29,6 +29,7 @@ document.getElementById("get-video-details").addEventListener("click", (e) => {
   // document.querySelector(".load").style.display = "Flex";
   //fetch video
 
+  // fetch("https://tube-katch.vercel.app/getVideo?videoUrl=" + urllink, {
   // fetch("http://127.0.0.1:5000/getVideo?videoUrl=" + urllink, {
   fetch("https://tubekatch.onrender.com/getVideo?videoUrl=" + urllink, {
     method: "POST",

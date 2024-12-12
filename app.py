@@ -6,6 +6,8 @@ import os
 import ffmpeg
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 
@@ -166,9 +168,11 @@ def get_video_url_from_selenium(url):
     chrome_options.add_argument("--headless")  # Run in headless mode (no UI)
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-
+    # service = os.environ.get("CHROMEDRIVER")
+    # service = Service(executable_path="chromedriver")
+    # print (service, 'service')
     # Path to ChromeDriver (adjust if needed)
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=chrome_options)
 
     try:
         # Open the YouTube video page
@@ -205,4 +209,4 @@ def get_video():
 
     return jsonify({'error': 'No video URL provided'}), 400
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(debug=True,port=5000)
